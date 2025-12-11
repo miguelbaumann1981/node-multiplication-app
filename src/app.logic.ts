@@ -11,8 +11,8 @@ const { b:base, l:limit, s:isShown } = yarg;
 const header: string = `=============\nTabla del ${base}\n=============\n`;
 let outputMessage: string = '';
 
-for (let i = 1; i <= Number(limit); i++) {
-    const operation =  Number(base) * i;
+for (let i = 1; i <= limit; i++) {
+    const operation =  base * i;
     outputMessage += `${base} x ${i} = ${operation}\n`
 }
 outputMessage = header + outputMessage;
