@@ -1,13 +1,26 @@
 
-const fs = require('fs')
+// const fs = require('fs');
+import * as fs from 'fs';
+import { yarg } from './config/plugins/args.plugin';
 
-const header: string = '=============\nTabla del 5\n=============\n';
+
+const { b:base, l:limit, s:isShown } = yarg;
+// const base: number = Number(yarg.b) ?? 5;
+// const limit: number = Number(yarg.l);
+// const isShown: boolean = Boolean(yarg.s);
+const header: string = `=============\nTabla del ${base}\n=============\n`;
 let outputMessage: string = '';
-for (let i = 1; i < 10; i++) {
-    const operation =  5 * i;
-    outputMessage += `5 x ${i} = ${operation}\n`
+
+for (let i = 1; i <= Number(limit); i++) {
+    const operation =  Number(base) * i;
+    outputMessage += `${base} x ${i} = ${operation}\n`
 }
 outputMessage = header + outputMessage;
+
+if (isShown) {
+    console.log(outputMessage);
+}
+console.log('File created');
 
 const outputPath = `outputs`;
 fs.mkdirSync(outputPath, {recursive: true});
