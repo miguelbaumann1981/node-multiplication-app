@@ -1,7 +1,7 @@
 import { CreateTable } from "../domain/use-cases/create-table.use-case";
 import { SaveFile } from "../domain/use-cases/save-file.use-case";
 
-interface RunOptions {
+export interface RunOptions {
     base: number;
     limit: number;
     showTable: boolean;
@@ -24,7 +24,7 @@ export class ServerApp {
             });
         
         if (showTable) console.log(table);
-        (wasCreated) ? console.log('File created!') : console.log('File not created');
+        (wasCreated) ? console.log('File created!') : console.error('File not created');
     }
 
 

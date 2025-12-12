@@ -1,6 +1,6 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"],
   "include": ["src/**/*", "config/plugins"],
   "compilerOptions": {
     // File Layout
@@ -11,7 +11,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "moduleResolution": "node", // Or your target environment
-    "target": "esnext",
+    "target": "es2016",
     "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
