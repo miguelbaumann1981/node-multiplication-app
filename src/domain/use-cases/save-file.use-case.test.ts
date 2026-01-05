@@ -13,13 +13,12 @@ describe ('SaveFileUseCase', () => {
     const customnFilePath = `${customOptions.fileDestination}/${customOptions.fileName}.txt`;
 
 
-    // afterEach(() => {
-    //     const existOuputFolder = fs.existsSync('outputs');
-    //     if (existOuputFolder) fs.rmSync('outputs', { recursive: true });
-        
-    //     const existCustomOutputFolder= fs.existsSync(customOptions.fileDestination);
-    //     if (existCustomOutputFolder) fs.rmSync('custom-outputs', { recursive: true });
-    // });
+    afterEach(() => {
+        // `force: true` prevents ENOENT when the folder doesn't exist yet.
+        // It's also more stable on Windows when files are created/removed quickly during watch mode.
+        fs.rmSync('outputs', { recursive: true, force: true });
+        fs.rmSync('custom-outputs', { recursive: true, force: true });
+    });
 
     test('should save file with default values', () => {
         const filePath = 'outputs/table.txt';
